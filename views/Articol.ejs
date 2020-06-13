@@ -1,0 +1,43 @@
+<style>
+    .header {
+        padding: 60px;
+        text-align: center;
+        background: #ffffff;
+        color: black;
+        font-size: 60px;
+        font-family: Impact, Charcoal, sans-serif;
+        width: 60%;
+        margin: auto;
+      }
+
+      .ArticleDiv {
+      width: 60%;
+      padding: 10px;
+      border: 5px solid gray;
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      font-variant: small-caps;
+      margin: auto;
+      margin-top: 10px; 
+  }
+
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      margin: 10px;
+      text-align: center;
+      background-color: #f1f1f1;
+      width: 60%;
+      margin: auto;
+      font-size: 20px;
+      word-wrap: break-all;
+      white-space: pre-wrap;
+    }
+
+</style>
+<div class="header">
+    <h3><%=Articol.Nume%> <br> <%=Articol.Data%></h3>
+</div>
+<div class="card">
+    <%=Articol.Continut%>
+</div>

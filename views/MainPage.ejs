@@ -1,0 +1,80 @@
+
+<style>
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+  }
+
+  .ArticleDiv {
+      width: 95%;
+      padding: 10px;
+      border: 5px solid gray;
+      margin: 0;
+      text-align: center;
+      margin: auto;
+      margin-top: 10px;
+      
+  }
+</style>
+
+<script>
+ async function myFunction(numeArticol) {
+    var txt;
+   
+    var r = confirm("Esti sigur ca vrei sa stergi acest articol?");
+    if (r == true) 
+    {
+
+  const formular = document.createElement('FORM');
+  formular.id="formularSterge"
+  formular.method = "POST";
+  formular.action = "StergeArticol";
+  
+
+  const hiddenField = document.createElement('INPUT');
+  hiddenField.type = 'hidden';
+  hiddenField.id="hiddenFieldId";
+  hiddenField.name = "ArticolSters";
+  hiddenField.value = numeArticol;
+
+  formular.appendChild(hiddenField);
+    
+  document.body.appendChild(formular);
+  document.getElementById('formularSterge').submit();
+    }
+    
+  }
+  </script>
+
+<div class="header">
+  <h1>Articole</h1>
+</div>
+
+<%if(Articole!=null){%>
+  <%var i%>
+  <%for(i=0;i< Articole.length;i++){%>
+
+  <form action="Articol" method="POST">
+    <div class="ArticleDiv">
+      <h3><%=Articole[i].Nume%></h3>  
+      <%if(Admin!=null){%>
+          <button type="submit" id="buttonSubmitEditeazaArticol" value=<%=Articole[i].Nume%> name="ArticolEditat" formaction="EditeazaArticol" >Editeaza</button>
+         <!-- <button onclick="myFunction('<%=Articole[i].Nume %>')">Sterge</button> --> 
+         <button type="submit" id="buttonSubmitStergeArticol" value=<%=Articole[i].Nume%> name="ArticolSters" formaction="StergeArticol">Sterge</button>
+
+      <%}%>
+      <button type="submit" id="buttonSubmit" + <%= Articole[i].Nume %> value= <%= Articole[i].Nume %> name="ArticolSelectat">Vizioneza</button>
+    </div>
+  </form> 
+  
+      <%}%>
+  <%}%>
+
+<%if(Admin!=null){%>
+  <form action="PosteazaArticol" method="POST">
+    <button type="submit" id="buttonSubmitPosteazaArticol" value="DA" name="Admin">Posteaza</button>
+  </form>
+<%}%>
